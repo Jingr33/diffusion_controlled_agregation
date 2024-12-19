@@ -2,7 +2,7 @@ from vispy import scene
 from vispy.visuals.transforms import STTransform
 
 
-from Calculation import Calculation
+from calculation import Calculation
 import config
 
 

@@ -5,9 +5,9 @@ import imageio
 from icecream import ic
 import threading
 
-from Layout_generator import LayoutGenerator
-from Calculation import Calculation
-from Atom import Atom
+from layout_generator import LayoutGenerator
+from calculation import Calculation
+from atom import Atom
 import config
 
 class Simulation ():

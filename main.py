@@ -1,6 +1,6 @@
 import argparse
 
-from Simulation import Simulation
+from simulation import Simulation
 from config import *
 
 def main():

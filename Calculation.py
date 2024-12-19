@@ -14,7 +14,6 @@ class Calculation ():
             for atom in self.moving_atoms:
                 shift_vec = self.gen_biased_vector(atom)
                 atom.update_position(atom.position + shift_vec)
-            print(len(self.freeze_atoms))
             count += 1
             
     def _check_freeze (self, atom) -> None:
