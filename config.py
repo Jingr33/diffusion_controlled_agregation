@@ -11,3 +11,4 @@ electrode_color = (0.70588235, 0.03921568, 0.03921568)
 #SIMULATION
 time_step = 0.032
 step = 0.2
+direc_prob = 0.1
