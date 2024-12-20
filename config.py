@@ -6,9 +6,12 @@ atoms_default = 50
 #COLORS
 atom_edge_color = (0.5, 0.5, 0.5, 0.5)
 ion_color = (0.04313725, 0.70588235, 1)
-electrode_color = (0.70588235, 0.03921568, 0.03921568)
+electrode_color = "#F28522" #(0.70588235, 0.03921568, 0.03921568)
 
 #SIMULATION
 time_step = 0.032
-step = 0.2
+step = 0.1
 direc_prob = 0.1
+
+# DISPLAY
+atom_radius = 0.5

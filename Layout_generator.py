@@ -20,13 +20,13 @@ class LayoutGenerator ():
         pass
 
     def _gen_random_layout(self) -> list:
-        max_radius = math.ceil(math.pow(self.atoms_num, 0.8))
+        max_radius = math.ceil(math.pow(self.atoms_num, 0.5))
         coord_list = [None] * self.atoms_num
         for i in range(self.atoms_num):
             y_coord = random.randint(-max_radius, max_radius + 1)
             z_coord = random.randint(-max_radius, max_radius + 1)
             x_coord = random.randint(-max_radius, max_radius + 1)
-            coord_list[i] = (x_coord, y_coord, z_coord)
+            coord_list[i] = np.array([x_coord, y_coord, z_coord])
         return coord_list
     
     def get_start_pos (self) -> list:
