@@ -1,7 +1,7 @@
 # ARGUMENTS
 layout_choices = ["cube", "sphere", "random"]
 layout_default = layout_choices[2]
-atoms_default = 50
+atoms_default = [50]
 
 #COLORS
 atom_edge_color = (0.5, 0.5, 0.5, 0.5)

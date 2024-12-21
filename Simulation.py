@@ -9,7 +9,7 @@ from calculation import Calculation
 from atom import Atom
 
 class Simulation ():
-    def __init__(self, layout : str, atoms_num : int):
+    def __init__(self, layout : str, atoms_num : int, visualize : bool):
         self.layout = layout
         self.atoms_num = atoms_num
         self.ions = []
@@ -18,6 +18,11 @@ class Simulation ():
         self._generate_ion_layout()
         self.electrode = self._generate_elecrode()
         self._calculate_simulation()
+        if (visualize): self._visualize()
+        self._radius_of_gyration = self._calc_gyration()
+        self._gyration_to_db()
+
+    def _visualize(self) -> None:
         self._init_scene()
         self._display_sim_state("start", self.vb1)
         self._display_sim_state("finish", self.vb2)
@@ -62,3 +67,23 @@ class Simulation ():
 
     def run(self) -> None:
         self.canvas.app.run()
+
+    def _calc_gyration (self) -> float:
+        atoms = self.electrodes + self.ions
+        com = self._center_of_mass(atoms)
+        r_pow2_sum = 0
+        for atom in atoms:
+            r_atom = np.linalg.norm(atom.position - com)
+            r_pow2_sum += np.pow(r_atom, 2)
+        return np.sqrt(r_pow2_sum / self.atoms_num)
+
+    def _center_of_mass (self, atoms : list) -> np.array:
+        pos_sum = np.array([0, 0, 0])
+        for atom in atoms:
+            pos_sum = pos_sum + atom.position
+        return np.array(pos_sum / self.atoms_num)
+
+    def _gyration_to_db (self) -> float:
+        with open ("database.txt", "a+") as f:
+            line = f"{self._radius_of_gyration} {self.atoms_num}\n"
+            f.write(line)
