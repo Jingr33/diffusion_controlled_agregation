@@ -9,9 +9,8 @@ from calculation import Calculation
 from atom import Atom
 
 class Simulation ():
-    def __init__(self, layout : str, atoms_num : int, save : bool):
+    def __init__(self, layout : str, atoms_num : int):
         self.layout = layout
-        self.save = save
         self.atoms_num = atoms_num
         self.ions = []
         self.electrodes = []

@@ -1,7 +1,6 @@
 import random
 import config
 import numpy as np
-from tqdm import tqdm
 
 
 class Calculation ():
@@ -21,7 +20,7 @@ class Calculation ():
                 ion.update_position(ion.position + shift_vec * config.step)
             
     def _is_electrode (self, ion, nearest_electrode) -> bool:
-        if (ion.electrode_dist <= config.atom_radius*2):
+        if (ion.electrode_dist <= config.atom_radius*2 + config.step/2):
             ion.transform_to_electrode(nearest_electrode)
             self.electrodes.append(ion)
             self.ions.remove(ion)
@@ -46,6 +45,16 @@ class Calculation ():
         rand_direc = rand_direc / np.linalg.norm(rand_direc)
         biased_vec = (1 - probability) * rand_direc + probability * pref_direc
         return np.array(biased_vec / np.linalg.norm(biased_vec))
+    
+    def final_pos_optimalization (atom) -> np.array:
+        electrode_pos = atom.parent_electrode.position
+        elec_to_ion = np.array(atom.position - electrode_pos)
+        distance = np.linalg.norm(elec_to_ion)
+        if (distance == 0):
+            return np.array(atom.position)
+        norm_elec_to_ion = np.array(elec_to_ion / distance)
+        return np.array(electrode_pos + norm_elec_to_ion * 2 * config.atom_radius)
+
 
     def vec_magnitude (vector : np.array) -> float:
         return np.linalg.norm(vector)

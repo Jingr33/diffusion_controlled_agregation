@@ -5,13 +5,23 @@ atoms_default = 50
 
 #COLORS
 atom_edge_color = (0.5, 0.5, 0.5, 0.5)
-ion_color = (0.04313725, 0.70588235, 1)
-electrode_color = "#F28522" #(0.70588235, 0.03921568, 0.03921568)
+atom_color = {
+    -1 : "#87CEEB",
+    0 : "#9e0142",
+    1 : "#d53e4f",
+    2 : "#f46d43",
+    3 : "#fdae61",
+    4 : "#fee08b",
+    5 : "#e6f598",
+    6 : "#abdda4",
+    7 : "#66c2a5",
+    8 : "#3288bd",
+    9 : "#5e4fa2",
+}
 
 #SIMULATION
-time_step = 0.032
 step = 0.1
 direc_prob = 0.1
 
 # DISPLAY
-atom_radius = 0.5
+atom_radius = 0.7
