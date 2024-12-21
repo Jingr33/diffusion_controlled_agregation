@@ -16,9 +16,7 @@ def main():
     _plot_chart(args.plot)
 
 def _start_sim (layout : str, atom_numbers : list, visualize : bool, simulation : bool) -> None:
-    print(simulation)
-    if not simulation: 
-        return
+    if not simulation: return
     for atom_number in atom_numbers:
         sim = Simulation(layout, atom_number, visualize)
         if (visualize):
