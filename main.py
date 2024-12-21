@@ -9,7 +9,7 @@ def main():
     parser.add_argument("--atoms", nargs='+', type=int, default = atoms_default, help = "Počet atomů v simulaci")
     parser.add_argument("--visualize", type=bool, default=False, help = "Zobrazí vizualizaci počátečního a koncového stavu")
     parser.add_argument("--plot", type=bool, default=True, help = "Zobrazí graf počet atomů vs. gyrační poloměr")
-    parser.add_argument("--simulation", type=bool, default = True, help = "Spustí simulaci")
+    parser.add_argument("--simulation", type=bool, default=True, help = "Spustí simulaci")
 
     args = parser.parse_args()
     _start_sim(args.layout, args.atoms, args.visualize, args.simulation)
