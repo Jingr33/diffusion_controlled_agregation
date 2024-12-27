@@ -20,7 +20,7 @@ atom_color = {
 }
 
 #SIMULATION
-step = 0.1
+step = 0.2
 direc_prob = 0.1
 
 # DISPLAY

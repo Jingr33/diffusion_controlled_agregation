@@ -13,6 +13,7 @@ def main():
 
     args = parser.parse_args()
     _start_sim(args.layout, args.atoms, args.visualize, args.sim)
+    _visualize(args.visualize)
     _plot_chart(args.plot)
 
 def _start_sim (layout : str, atom_numbers : list, visualize : bool, simulation : bool) -> None:
@@ -21,6 +22,9 @@ def _start_sim (layout : str, atom_numbers : list, visualize : bool, simulation 
         sim = Simulation(layout, atom_number, visualize)
         if (visualize):
             sim.run()
+
+def _visualize (visualize : bool, file : str) -> None:
+    pass
 
 def _plot_chart (plot_bool) -> None:
     if (plot_bool):
