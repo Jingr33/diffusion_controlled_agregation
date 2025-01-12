@@ -4,7 +4,18 @@ import math
 import random
 
 class LayoutGenerator ():
+    """
+    Generate list of 3D vector for atom starting positions.
+    """
+
     def __init__(self, layout : str, atoms_num : int):
+        """
+        Initialize LayoutGenerator.
+
+        Args:
+            laout (str): type of starting layout (cube, sphere, random)
+            atoms_num (int): number of atoms in system
+        """
         self.atoms_num = atoms_num      
         if (layout == config.layout_choices[0]):
             self.start_postions = self._gen_cube_layout()
@@ -14,6 +25,12 @@ class LayoutGenerator ():
             self.start_postions = self._gen_random_layout()
         
     def _gen_cube_layout(self) -> list:
+        """
+        Generate random layout of atoms on the surface of the cube.
+
+        Returns:
+            list[np.array]: list of positions for every free ion in the start of the simulation
+        """
         coord_list = [None] * self.atoms_num
         half_edge = np.pow(self.atoms_num, 0.56)
         for i in range(self.atoms_num):
@@ -28,6 +45,12 @@ class LayoutGenerator ():
         return coord_list
 
     def _gen_sphere_layout(self) -> list:
+        """
+        Generate random layout of atoms on the surface of the sphere.
+
+        Returns:
+            list[np.array]: list of positions for every free ion in the start of the simulation
+        """
         coord_list = [None] * self.atoms_num
         r = np.pow(self.atoms_num, 0.5) * 2
         for i in range(self.atoms_num):
@@ -40,6 +63,12 @@ class LayoutGenerator ():
         return coord_list
 
     def _gen_random_layout(self) -> list:
+        """
+        Generate random layout of atoms in the space.
+
+        Returns:
+            list[np.array]: list of positions for every free ion in the start of the simulation
+        """
         max_radius = math.ceil(math.pow(self.atoms_num, 0.5))
         coord_list = [None] * self.atoms_num
         for i in range(self.atoms_num):
@@ -50,4 +79,7 @@ class LayoutGenerator ():
         return coord_list
     
     def get_start_pos (self) -> list:
+        """
+        Return list of free ions start positions.
+        """
         return self.start_postions

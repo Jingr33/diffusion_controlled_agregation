@@ -1,3 +1,7 @@
+"""
+File for configuration of the app.
+"""
+
 # ARGUMENTS
 layout_choices = ["cube", "sphere", "random"]
 layout_default = layout_choices[2]
@@ -20,7 +24,7 @@ atom_color = {
 }
 
 #SIMULATION
-step = 0.2
+step = 0.25
 direc_prob = 0.1
 
 # DISPLAY

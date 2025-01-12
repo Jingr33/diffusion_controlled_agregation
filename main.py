@@ -1,5 +1,10 @@
-import argparse
-from simulation import Simulation
+"""
+App for simulation of diffusion controlled agregation. It simulates the creation of a dendrimer during electrolysis.
+"""
+
+
+import argparse # zpracování argumetů z konzole
+from Simulation import Simulation
 from chart_creator import ChartCreator
 from config import *
 
@@ -13,21 +18,36 @@ def main():
 
     args = parser.parse_args()
     _start_sim(args.layout, args.atoms, args.visualize, args.sim)
-    _visualize(args.visualize)
     _plot_chart(args.plot)
 
 def _start_sim (layout : str, atom_numbers : list, visualize : bool, simulation : bool) -> None:
+    """
+    Start simulation and visualization
+
+    Performs the entire simulation, followed by visualization and calculation of gyraion radius of the system.
+
+    Args:
+        layout (str): Start positions of the ions (cube, sphere or random layout)
+        atom_numbers (int): number of ions in the simulation
+        visualize (bool): if the visualization of start and finished state is enabled
+        simulation (bool): if the simulation process is enabled
+    """
     if not simulation: return
     for atom_number in atom_numbers:
         sim = Simulation(layout, atom_number, visualize)
         if (visualize):
             sim.run()
 
-def _visualize (visualize : bool, file : str) -> None:
-    pass
+def _plot_chart (plot : bool) -> None:
+    """
+    Plot chart.
 
-def _plot_chart (plot_bool) -> None:
-    if (plot_bool):
+    Plots a dependency graph of log N (particles number) on log Rg (gyration radius) after the simulation is terminated.
+
+    Args:
+        plot (bool): Plot of chart is enabled.
+    """
+    if (plot):
         ChartCreator()
 
 
